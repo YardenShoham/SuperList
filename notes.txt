@@ -1,0 +1,4 @@
+File: theList - list of products
+abstract Product has: name, brand, note (string), units
+	basicProduct: quantityAtHome, requiredQuantity
+	leisureProduct: requestedQuantity
