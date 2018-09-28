@@ -30,6 +30,20 @@ public class BasicProduct extends Product implements Serializable
 	}
 
 	/**
+	* A constructor to set only the name, units, available amount snd required amount of the product.
+	* @param name the name of the product
+	* @param units the units of the product - how the product is measured
+	* @param quantityAtHome the available amount of product
+	* @param requiredQuantity the minimal amount of product needed at all times
+	*/
+	public BasicProduct(String name, String units, double quantityAtHome, double requiredQuantity)
+	{
+		super(name, units);
+		setQuantityAtHome(quantityAtHome);
+		setRequiredQuantity(requiredQuantity);
+	}
+
+	/**
 	* Updates the available amount of product
 	* @param quantityAtHome the available amount of product - equal to or higher than 0
 	*/
