@@ -1,4 +1,6 @@
 File: theList - list of products
+	ArrayList 												# to be upgraded to a full-scale database
+
 abstract Product has: name, brand, note (string), units
 	basicProduct: quantityAtHome, requiredQuantity
 	leisureProduct: requestedQuantity
