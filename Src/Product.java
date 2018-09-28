@@ -1,5 +1,7 @@
 // Product.java
 
+import java.io.Serializable;
+
 /**
 * A product that you can find when you go to a store.
 * @author Yarden Shoham & Avi Mishayev
@@ -20,10 +22,10 @@ public abstract class Product implements Serializable
 	*/
 	public Product(String name, String brand, String note, String units)
 	{
-		this.name = name;
-		this.brand = brand;
-		this.note = note;
-		this.units = units;
+		setName(name);
+		setBrand(brand);
+		setNote(note);
+		setUnits(units);
 	}
 
 	/**
