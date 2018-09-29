@@ -3,7 +3,7 @@
 import java.io.Serializable;
 
 /**
-* A nonessential product is the opposite of a basic product, it's not required for the day-to-day life but may be requested nevertheless.
+* A non essential product is the opposite of a basic product, it's not required for the day-to-day life but may be requested nevertheless.
 * For example: chocolate.
 * @author Yarden Shoham
 */
@@ -19,7 +19,7 @@ public class NonessentialProduct extends Product implements Serializable
 	* @param units the units of the product - how the product is measured
 	* @param requestedQuantity the requested amount to be purchased
 	*/
-	public BasicProduct(String name, String brand, String note, String units, double requestedQuantity)
+	public NonessentialProduct(String name, String brand, String note, String units, double requestedQuantity)
 	{
 		super(name, brand, note, units);
 		setRequestedQuantity(requestedQuantity);
@@ -31,7 +31,7 @@ public class NonessentialProduct extends Product implements Serializable
 	* @param units the units of the product - how the product is measured
 	* @param requestedQuantity the requested amount to be purchased
 	*/
-	public BasicProduct(String name, String units, double requestedQuantity)
+	public NonessentialProduct(String name, String units, double requestedQuantity)
 	{
 		super(name, units);
 		setRequestedQuantity(requestedQuantity);

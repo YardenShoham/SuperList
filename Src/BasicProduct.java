@@ -85,9 +85,9 @@ public class BasicProduct extends Product implements Serializable
 	* Returns the minimal amount of product needed at all times
 	* @return the required amount of product
 	*/
-	public double getQuantityAtHome()
+	public double getRequiredQuantity()
 	{
-		return quantityAtHome;
+		return requiredQuantity;
 	}
 
 	/**

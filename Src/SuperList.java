@@ -9,6 +9,7 @@ public class SuperList
 	private ArrayList<Product> theList;
 	private String location = "theList.bin";
 
+	@SuppressWarnings("unchecked")
 	public SuperList()
 	{
 		try

@@ -75,7 +75,7 @@ public abstract class Product implements Serializable
 	}
 
 	/**
-	* returnes the name of the product
+	* returns the name of the product
 	* @return the name of the product
 	*/
 	public String getName()
@@ -84,7 +84,7 @@ public abstract class Product implements Serializable
 	}
 
 	/**
-	* returnes the brand of the product
+	* returns the brand of the product
 	* @return the brand of the product
 	*/
 	public String getBrand()
@@ -93,7 +93,7 @@ public abstract class Product implements Serializable
 	}
 
 	/**
-	* returnes the note of the product - additional information about the product
+	* returns the note of the product - additional information about the product
 	* @return additional information about the product
 	*/
 	public String getNote()
@@ -102,7 +102,7 @@ public abstract class Product implements Serializable
 	}
 
 	/**
-	* returnes the units of the product - how the product is measured
+	* returns the units of the product - how the product is measured
 	* @return the units of the product
 	*/
 	public String getUnits()
