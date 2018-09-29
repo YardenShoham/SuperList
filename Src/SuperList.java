@@ -2,12 +2,15 @@
 
 import java.util.*;
 
+import bl.BusEventsListener;
+
 import java.io.*;
 
 public class SuperList
 {
 	private ArrayList<Product> theList;
 	private String location = "theList.bin";
+	private ListListener controller;
 
 	@SuppressWarnings("unchecked")
 	public SuperList()
@@ -41,6 +44,10 @@ public class SuperList
 	public boolean removeFromList(Product product)
 	{
 		return theList.remove(product);
+	}
+	
+	public void registerListener(ListEventsListener listener) {
+		controller = listener;
 	}
 
 }
