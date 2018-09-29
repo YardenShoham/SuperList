@@ -4,3 +4,9 @@ File: theList - list of products
 abstract Product has: name, brand, note (string), units
 	basicProduct: quantityAtHome, requiredQuantity
 	nonessentialProduct: requestedQuantity
+
+MVC steps: 
+	add & remove in superList- fire and manipulate product object 
+	Listeners interfaces 
+	controller -implement Listeners interfaces
+	view
