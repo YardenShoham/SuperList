@@ -10,7 +10,7 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 	
 	@Override
 	public void addProductToUI(String name, String brand, String notes, String units) {
-		// TODO Auto-generated method stub
+		listBL.addToList(String name, String brand, String notes, String units);
 		
 	}
 
@@ -27,7 +27,7 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 	}
 
 	@Override
-	public void removedProductFromModelEvent(Product deletedProduct) {
+	public void removedProductFromModelEvent(Product removedProduct) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,8 +2,8 @@
 package bl;
 
 import java.util.*;
-
 import java.io.*;
+import listeners.*;
 
 public class SuperList
 {
@@ -44,6 +44,13 @@ public class SuperList
 		fireAddProductEvent(newProduct);
 
 	}
+	
+	public void addToList(String name, String brand, String note, String units) {
+		//Product newProduct = new BasicProduct(name,brand,note,units, 0, 0);
+		theList.add(new BasicProduct(name,brand,note,units, 0, 0)); 
+		
+		
+	}
 
 	public void removeFromList(Product product)
 	{
@@ -62,8 +69,8 @@ public class SuperList
 		controller.addedProductToModelEvent(newProduct);
 	}
 	
-	private void fireRemoveProductEvent(Product product) {
-		controller.removedProductFromModelEvent(product);
+	private void fireRemoveProductEvent(Product removedProduct) {
+		controller.removedProductFromModelEvent(removedProduct);
 	}
 
 	private void saveList()
