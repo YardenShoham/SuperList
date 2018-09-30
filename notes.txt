@@ -9,4 +9,6 @@ MVC steps:
 	add & remove in superList- fire and manipulate product object 
 	Listeners interfaces 
 	controller -implement Listeners interfaces
-	view
+	view - starting to work on the basic GUI
+	
+	
