@@ -2,7 +2,7 @@ package listeners;
 import bl.Product;
 
 public interface ListUIEventsListener {
-	void addProductToUI(String name,String brand,String notes,String units);
+	void addProductToUI(Product newProduct);
 	void removeProductFromUI(String name,String brand);
 }
 

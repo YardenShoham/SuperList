@@ -9,14 +9,14 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 //	private AbstractSuperListView listUI;
 	
 	@Override
-	public void addProductToUI(String name, String brand, String notes, String units) {
-		listBL.addToList(String name, String brand, String notes, String units);
+	public void addProductToUI(Product newProduct) {
+		listBL.addToList(newProduct);
 		
 	}
 
 	@Override
 	public void removeProductFromUI(String name, String brand) {
-		// TODO Auto-generated method stub
+		listBL.removeFromList(new Product(name,brand,null,null));
 		
 	}
 

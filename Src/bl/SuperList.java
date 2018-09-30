@@ -38,27 +38,18 @@ public class SuperList
 	public void addToList(Product newProduct) 
 	{
 		theList.add(newProduct);
-
+		
 		saveList();
 
 		fireAddProductEvent(newProduct);
 
 	}
 	
-	public void addToList(String name, String brand, String note, String units) {
-		//Product newProduct = new BasicProduct(name,brand,note,units, 0, 0);
-		theList.add(new BasicProduct(name,brand,note,units, 0, 0)); 
-		
-		
-	}
-
 	public void removeFromList(Product product)
 	{
-		theList.remove(product);
-
+		Product removedProduct = theList.remove(theList.indexOf(product));
 		saveList();
-
-		fireRemoveProductEvent(product);
+		fireRemoveProductEvent(removedProduct);
 	}
 	
 	public void registerListener(ListEventsListener listener) {
@@ -76,9 +67,13 @@ public class SuperList
 	private void saveList()
 	{
 		// write updated list to file
+		try{
 		ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(location));
 		oos.writeObject(theList);
 		oos.close();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 	}
 
 }
