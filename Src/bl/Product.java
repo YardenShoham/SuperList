@@ -1,5 +1,5 @@
 // Product.java
-
+package bl;
 import java.io.Serializable;
 
 /**
