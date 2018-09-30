@@ -11,25 +11,21 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 	@Override
 	public void addProductToUI(Product newProduct) {
 		listBL.addToList(newProduct);
-		
 	}
 
 	@Override
 	public void removeProductFromUI(String name, String brand) {
 		listBL.removeFromList(new Product(name,brand,null,null));
-		
 	}
 
 	@Override
 	public void addedProductToModelEvent(Product addedProduct) {
-		// TODO Auto-generated method stub
-		
+		listUI.addProductToUI(addedProduct);	
 	}
 
 	@Override
 	public void removedProductFromModelEvent(Product removedProduct) {
-		// TODO Auto-generated method stub
-		
+		listUI.removeProductFromUI(removedProduct);
 	}
 
 }

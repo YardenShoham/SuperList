@@ -6,7 +6,7 @@ import java.io.Serializable;
 * A product that you can find when you go to a store.
 * @author Yarden Shoham & Avi Mishayev
 */
-public abstract class Product implements Serializable
+public class Product implements Serializable
 {
 	private String name; 
 	private String brand;
