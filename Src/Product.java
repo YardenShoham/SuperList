@@ -110,4 +110,23 @@ public abstract class Product implements Serializable
 		return units;
 	}
 
+	/**
+	* 
+	* @param obj 
+	* @return 
+	*/
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj == this) return true;
+		if (!(obj instanceof Product)) return false;
+
+		Product other = (Product) obj;
+
+		boolean nameEquals = name.equals(other.getName());
+
+		if (brand == null) return nameEquals;
+		else return (nameEquals && brand.equals(other.getBrand()));
+	}
+
 }
