@@ -111,22 +111,26 @@ public class Product implements Serializable
 	}
 
 	/**
-	* 
-	* @param obj 
-	* @return 
+	* Compares two products.
+	* @param obj a product to check
+	* @return true if obj has the same name and brand as this, false otherwise.
 	*/
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (obj == this) return true;
-		if (!(obj instanceof Product)) return false;
+		if (obj == this) return true; // if both references refer to the same product
+		if (!(obj instanceof Product)) return false; // if the other object is not a product
 
-		Product other = (Product) obj;
+		Product other = (Product) obj; // now we know that obj is a product
 
-		boolean nameEquals = name.equals(other.getName());
+		boolean nameEquals = getName().equals(other.getName());
 
-		if (brand == null) return nameEquals;
-		else return (nameEquals && brand.equals(other.getBrand()));
+		boolean brandEquals;
+		if (other.getBrand() == null && getBrand() == null) brandEquals = true;
+		else if ((other.getBrand() == null && getBrand() != null) || (other.getBrand() != null && getBrand() == null)) brandEquals = false;
+		else brandEquals = getBrand().equals(other.getBrand());
+
+		return (nameEquals && brandEquals);
 	}
 
 }
