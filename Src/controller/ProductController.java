@@ -42,7 +42,7 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 		listBL.removeFromList(new Product(name, brand, null, null));	// this product is created in order to find a product with
 																		// the same name and brand (the product to remove)
 	}
-
+	
 	/**
 	* This method is called when a product was added to the list. The actual product has now been added to the model part
 	* of the MVC, now the only thing left to do is to relay the information to the view part - the UI.

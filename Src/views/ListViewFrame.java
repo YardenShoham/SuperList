@@ -11,23 +11,20 @@ import listeners.ListUIEventsListener;
 import views.AbstractListView;
 import views.helpers.*;
 
-
 @SuppressWarnings("serial")
-public class ListViewFrame extends JFrame implements AbstractListView
-{
-	private ListUIEventsListener controller;
-	private JButton addButton, removeButton;
+public class ListViewFrame extends JFrame implements AbstractListView {
+	private static ListUIEventsListener controller;
+	private JButton addButton, removeButton,modifyButton;
 
 	private JList<Product> productList;
 	private DefaultListModel<Product> productListModel = new DefaultListModel<>();
-	
+
 	private DetailsPanel detailsPanel;
 
-	public ListViewFrame()
-	{
+	public ListViewFrame() {
 		super("Super List");
-
-			// creating north buttons panel
+		setResizable(false);
+		// creating north buttons panel
 
 		// creating add button
 		addButton = new JButton("Add Product", new ImageIcon(getClass().getResource("resources/add1.png")));
@@ -35,7 +32,9 @@ public class ListViewFrame extends JFrame implements AbstractListView
 		addButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.addProductToUI(new Product("ya","yaa")); 
+				JFrame addProductFrame = new AddProductFrame();
+				addProductFrame.setVisible(true);
+				addProductFrame.setLocationRelativeTo(null);
 			}
 		});
 		// creating remove button
@@ -46,37 +45,49 @@ public class ListViewFrame extends JFrame implements AbstractListView
 			public void actionPerformed(ActionEvent e) {
 				Product selectedValue = productList.getSelectedValue();
 				if (selectedValue != null)
-					controller.removeProductFromUI(selectedValue.getName(), selectedValue.getBrand()); 
+					controller.removeProductFromUI(selectedValue.getName(), selectedValue.getBrand());
 			}
 		});
+		
+/*		// "Modify Product" Button
+		modifyButton = new JButton("Modify Product", new ImageIcon(getClass().getResource("resources/mod1.png")));
+		modifyButton.setRolloverIcon(new ImageIcon(getClass().getResource("resources/mod2.png")));
+		modifyButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Product selectedValue = productList.getSelectedValue();
+				if (selectedValue != null)
+					controller.removeProductFromUI(selectedValue.getName(), selectedValue.getBrand());
+					
+			}
+		});
+*/		
 		// creating panel
 		JPanel northPanel = new JPanel();
 		northPanel.add(addButton);
 		northPanel.add(removeButton);
-        add(northPanel, BorderLayout.NORTH);
+		add(northPanel, BorderLayout.NORTH);
 
-			// creating center data panel
+		// creating center data panel
 
-        // creating list
-        productList = new JList<>(productListModel);
-        productList.setVisibleRowCount(10);
-        productList.addListSelectionListener(
-        		new ListSelectionListener() {
-        			@Override
-        			public void valueChanged(ListSelectionEvent event) {
-        				detailsPanel.setFieldLayout(productList.getSelectedValue());
-        			}
-        		}
-        	);
+		// creating list
+		productList = new JList<>(productListModel);
+		productList.setVisibleRowCount(10);
+		productList.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent event) {
+				detailsPanel.setFieldLayout(productList.getSelectedValue());
+			}
+		});
 
-        // creating details
-        detailsPanel = new DetailsPanel();
+		// creating details
+		detailsPanel = new DetailsPanel();
 
-        // creating panel
-        JPanel centerPanel = new JPanel(new GridLayout(1, 2, 10, 10));
-        centerPanel.add(productList);
-        centerPanel.add(detailsPanel);
-        add(centerPanel);
+		// creating panel
+		JPanel centerPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+		centerPanel.add(productList);
+		centerPanel.add(detailsPanel);
+		add(centerPanel);
 	}
 
 	@Override
@@ -92,7 +103,12 @@ public class ListViewFrame extends JFrame implements AbstractListView
 	@Override
 	public void removeProductFromUI(Product removedProduct) {
 		productListModel.removeElement(removedProduct);
-		
+
+	}
+	
+	public static void newProductFromUser(String[] details) {
+		controller.addProductToUI(new Product(details[0], details[1],
+				details[2], details[3]));
 	}
 
 }
