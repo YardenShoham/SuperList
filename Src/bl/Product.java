@@ -134,12 +134,12 @@ public class Product implements Serializable
 	}
 
 	/**
-	* @return a string with a form of "brand name"
+	* @return a string with a form of "name brand"
 	*/
 	@Override
 	public String toString()
 	{
-		return (brand == null) ? name : brand + " " + name;
+		return (brand == null) ? name : name + " " + brand;
 	}
 
 }
