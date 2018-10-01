@@ -2,6 +2,7 @@ package controller;
 
 import bl.Product;
 import bl.SuperList;
+import views.AbstractListView;
 import listeners.*;
 
 /**
@@ -11,7 +12,7 @@ import listeners.*;
 public class ProductController implements ListEventsListener, ListUIEventsListener {
 
 	private SuperList listBL; // model
-	private AbstractSuperListView listUI; // view
+	private AbstractListView listUI; // view
 	
 	/**
 	* This method is called whenever a product is added to the list via the UI.

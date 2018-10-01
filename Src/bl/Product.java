@@ -133,4 +133,13 @@ public class Product implements Serializable
 		return (nameEquals && brandEquals);
 	}
 
+	/**
+	* @return a string with a form of "brand name"
+	*/
+	@Override
+	public String toString()
+	{
+		return (brand == null) ? name : brand + " " + name;
+	}
+
 }
