@@ -19,6 +19,8 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 		this.listUI = listUI;
 		listBL.registerListener(this);
 		listUI.registerListener(this);
+
+		listBL.loadDataFromFileIfExists();
 	}
 
 	/**

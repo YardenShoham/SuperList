@@ -78,5 +78,11 @@ public class DetailsPanel extends JPanel {
 				fields[4].setText((new Double(nonessentialProduct.getRequestedQuantity())).toString());
 			}
 		}
+		else {
+			fields[0].setText(null);
+			fields[1].setText(null);
+			fields[2].setText(null);
+			fields[3].setText(null);
+		}
 	}
 }

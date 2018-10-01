@@ -3,6 +3,7 @@ package views;
 
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.event.*;
 import javax.swing.*;
 
 import bl.Product;
@@ -20,7 +21,7 @@ public class ListViewFrame extends JFrame implements AbstractListView
 	private JList<Product> productList;
 	private DefaultListModel<Product> productListModel = new DefaultListModel<>();
 	
-	private JPanel detailsPanel;
+	private DetailsPanel detailsPanel;
 
 	public ListViewFrame()
 	{
@@ -35,7 +36,6 @@ public class ListViewFrame extends JFrame implements AbstractListView
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.addProductToUI(new Product("ya","yaa")); 
-				controller.addProductToUI(new Product("as","yaa")); 
 			}
 		});
 		// creating remove button
@@ -44,7 +44,9 @@ public class ListViewFrame extends JFrame implements AbstractListView
 		removeButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.removeProductFromUI(productList.getSelectedValue().getName(),productList.getSelectedValue().getBrand()); 
+				Product selectedValue = productList.getSelectedValue();
+				if (selectedValue != null)
+					controller.removeProductFromUI(selectedValue.getName(), selectedValue.getBrand()); 
 			}
 		});
 		// creating panel
@@ -58,6 +60,14 @@ public class ListViewFrame extends JFrame implements AbstractListView
         // creating list
         productList = new JList<>(productListModel);
         productList.setVisibleRowCount(10);
+        productList.addListSelectionListener(
+        		new ListSelectionListener() {
+        			@Override
+        			public void valueChanged(ListSelectionEvent event) {
+        				detailsPanel.setFieldLayout(productList.getSelectedValue());
+        			}
+        		}
+        	);
 
         // creating details
         detailsPanel = new DetailsPanel();

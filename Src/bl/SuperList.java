@@ -97,4 +97,11 @@ public class SuperList {
 		}
 	}
 
+	public void loadDataFromFileIfExists()
+	{
+		if (theList.size() > 0)
+			for (Product product : theList)
+				fireAddProductEvent(product);
+	}
+
 }
