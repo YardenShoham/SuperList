@@ -32,6 +32,7 @@ public class SuperList {
 			System.out.println(e);
 			theList = new ArrayList<>();
 		}
+		//System.out.println(theList.size());
 	}
 
 	/**

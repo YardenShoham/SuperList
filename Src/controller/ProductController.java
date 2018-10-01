@@ -14,6 +14,13 @@ public class ProductController implements ListEventsListener, ListUIEventsListen
 	private SuperList listBL; // model
 	private AbstractListView listUI; // view
 	
+	public ProductController(SuperList listBL, AbstractListView listUI) {
+		this.listBL = listBL;
+		this.listUI = listUI;
+		listBL.registerListener(this);
+		listUI.registerListener(this);
+	}
+
 	/**
 	* This method is called whenever a product is added to the list via the UI.
 	* @param newProduct the product that is being added to the list
