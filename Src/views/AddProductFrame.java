@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +17,8 @@ import bl.Product;
 
 public class AddProductFrame extends JFrame {
 	private String[] strProductType = { "Basic Product", "Non-Essential Product" };
-	private JRadioButton[] productTypeChoose;
-	
+//	private JRadioButton[] productTypeChoose;
+
 	private JPanel mainPanel;
 	private JPanel detailsPanel;
 	
@@ -28,11 +31,30 @@ public class AddProductFrame extends JFrame {
 
 	public ArrayList<String> generateLabels(){
 		ArrayList<String> temp = new ArrayList<>();
-		temp.add("Name");temp.add("Brand");temp.add("Note");temp.add("Units");
+		temp.add("Name");temp.add("Brand");//temp.add("Note");temp.add("Units");
 		return temp;
 	}
 	
 	public AddProductFrame() {
+		JToggleButton productTypeChoose = new JToggleButton("Basic Product");
+
+
+			productTypeChoose.addActionListener(new ActionListener( ) {
+		        public void actionPerformed(ActionEvent ev) {
+		        JToggleButton btn = (JToggleButton) ev.getSource();
+		        if(btn.getText().equals("Basic Product")) {	
+		        	btn.setText("Non-Essential Product");
+		        	btn.setForeground(Color.GREEN);
+		        }
+		        else if(btn.getText().equals("Non-Essential Product")) {	
+		        	btn.setText("Basic Product");
+		        	btn.setForeground(Color.RED);
+		        }
+		          System.out.println(getDate());
+		        }
+		      });
+		   
+		
 		indexDetail = 0;		//a static member. need to an initial value
 		setSize(300, 150);
 		getContentPane().setBackground(Color.WHITE);
@@ -41,7 +63,7 @@ public class AddProductFrame extends JFrame {
 		mainPanel.setBorder(BorderFactory.createTitledBorder("Insert your product details: "));
 		
 		// Radio buttons
-		ButtonGroup bg = new ButtonGroup();
+/*		ButtonGroup bg = new ButtonGroup();
 		productTypeChoose = new JRadioButton[strProductType.length];
 		for (int i = 0; i < strProductType.length; i++) {
 			productTypeChoose[i] = new JRadioButton(strProductType[i]);
@@ -50,7 +72,8 @@ public class AddProductFrame extends JFrame {
 			mainPanel.add(productTypeChoose[i]);
 		}
 		productTypeChoose[0].setSelected(true);		//initial value
-		
+*/				
+		mainPanel.add(productTypeChoose);	
 		//details panel
 //		String[] strDetail = { "Name", "Brand", "Note", "Units" };
 		ArrayList<String> strDetail = generateLabels();
@@ -78,8 +101,8 @@ public class AddProductFrame extends JFrame {
 			}
 			
 			public void FirstOK() {
-				for(int i=0;i<productTypeChoose.length;i++)
-					productTypeChoose[i].setEnabled(false);
+//				for(int i=0;i<productTypeChoose.length;i++)
+//					productTypeChoose[i].setEnabled(false);
 	//			if(productTypeChoose[0].isSelected()) strDetail.add("Requird Quanity");
 			}
 		});
@@ -88,5 +111,13 @@ public class AddProductFrame extends JFrame {
 		mainPanel.add(detailsPanel);
 		add(mainPanel);
 
+	}
+	
+	public String getDate() {
+		LocalDateTime clk = LocalDateTime.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM-dd, HH:mm");
+	//	dtf.ofLocalizedDateTime(dateStyle,timeStyle);
+//        clock.setText(DateFormat.getDateTimeInstance().format(dtf2));
+		return clk.format(dtf);
 	}
 }

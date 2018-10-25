@@ -22,24 +22,24 @@ public class DetailsPanel extends JPanel {
 
 	public DetailsPanel() {
 		setLayout(new GridLayout(maxFields, 2, 5, 5)); 
-
 		fields = new JTextField[maxFields];
 		for (int i = 0; i < fields.length; i++) {
 			fields[i] = new JTextField(10);
 			fields[i].setEditable(false);
+//			fields[i].setAlignmentX(CENTER_ALIGNMENT);
 		}
 
 		productFieldLabels = new JLabel[productFieldNames.length];
 		for (int i = 0; i < productFieldLabels.length; i++)
-			productFieldLabels[i] = new JLabel(productFieldNames[i], SwingConstants.RIGHT);
+			productFieldLabels[i] = new JLabel(productFieldNames[i], SwingConstants.CENTER);
 
 		basicProductFieldLabels = new JLabel[basicProductFieldNames.length];
 		for (int i = 0; i < basicProductFieldLabels.length; i++)
-			basicProductFieldLabels[i] = new JLabel(basicProductFieldNames[i], SwingConstants.RIGHT);
+			basicProductFieldLabels[i] = new JLabel(basicProductFieldNames[i], SwingConstants.CENTER);
 
 		nonessentialProductFieldLabels = new JLabel[nonessentialProductFieldNames.length];
 		for (int i = 0; i < nonessentialProductFieldLabels.length; i++)
-			nonessentialProductFieldLabels[i] = new JLabel(nonessentialProductFieldNames[i], SwingConstants.RIGHT);
+			nonessentialProductFieldLabels[i] = new JLabel(nonessentialProductFieldNames[i], SwingConstants.CENTER);
 		
 		setFieldLayout(null);
 	}
