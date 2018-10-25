@@ -56,7 +56,7 @@ public class ListViewFrame extends JFrame implements AbstractListView {
 
 	}
 
-	public static void newProductFromUser(String[] details) {
+	public void newProductFromUser(String[] details) {
 		controller.addProductToUI(new Product(details[0], details[1], details[2], details[3]));
 	}
 
@@ -71,7 +71,7 @@ public class ListViewFrame extends JFrame implements AbstractListView {
 			addButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					JFrame addProductFrame = new AddProductFrame();
+					JFrame addProductFrame = new AddProductFrame(ListViewFrame.this);
 					addProductFrame.setVisible(true);
 					addProductFrame.setLocationRelativeTo(null);
 				}

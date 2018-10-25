@@ -29,13 +29,16 @@ public class AddProductFrame extends JFrame {
 		return productTemplate;
 	}
 
+	ListViewFrame parentFrame;
+
 	public ArrayList<String> generateLabels(){
 		ArrayList<String> temp = new ArrayList<>();
 		temp.add("Name");temp.add("Brand");//temp.add("Note");temp.add("Units");
 		return temp;
 	}
 	
-	public AddProductFrame() {
+	public AddProductFrame(ListViewFrame parentFrame) {
+		this.parentFrame = parentFrame;
 		JToggleButton productTypeChoose = new JToggleButton("Basic Product");
 
 
@@ -95,7 +98,7 @@ public class AddProductFrame extends JFrame {
 				txtDetail.setText("");
 				if (indexDetail == strDetail.size()-1) {
 					setVisible(false);
-					ListViewFrame.newProductFromUser(productTemplate);
+					parentFrame.newProductFromUser(productTemplate);
 				} else
 					lblDetail.setText(strDetail.get(++indexDetail) + ": ");
 			}
